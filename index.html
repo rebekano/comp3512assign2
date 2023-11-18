@@ -5,6 +5,7 @@
        <script src="data/artists.json"></script>
        <script src="data/genres.json"></script>
        <script src="data/sample-songs.json"></script>
+       <link rel="stylesheet" href="css/index.css">
        <script>
         (function() {
             console.log(typeof artists);
@@ -22,9 +23,82 @@
         })();
     </script>
     </head>
-    <body>
-        <h2> Assignment #2 </h2>
-       <p>Group Members:Faye Palarca, Harsheen Nijjer, Rebeka Ochieng
 
+    <header>
+        <div>Group Members: Faye Palarca, Harsheen Nijjer, Rebeka Ochieng</div>
+        <a href="https://github.com/rebekano/rebekano.github.io/tree/main">Github Repository</a>
+        <div class="nav-title">
+            <h3>Assignment #2 </h3>
+        </div>
+      </div>
+    </header>
+    
+    
+    <body>
+        <div class="display">
+            <article id="Searchdisplay">
+                <div class="Form-display">
+                    <h2> Basic Song Search</h2>
+                    <form id="song-search-form" >
+                        <div class="filter">
+                            <label for="Song title">Title</label>
+                            <input list="song-title-search" name="song-title">
+                        </div>
+                    <div  class="hide filter-div">
+                        <label for="artist-select">Artist</label>
+                        <select name="artist-name" id="artist-select">
+                          <option value="" disabled hidden selected></option>
+                        </select>
+                    </div>
+    
+                    <div class="hide filter-div"> <label for="genre-select">Genre</label>
+                        <select name="genre-name" id="genre-select">
+                          <option value="" disabled hidden selected></option>
+                        </select>
+                    </div>
+                    <div id="btn-container">
+                        <button type="submit" id="searchButton" class="btn">Filter</button>
+                        <button type="submit" id="clearButton" class="btn">Clear</button>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+                    </form>
+                </div>
+                </article>
+                </div>
+    
+            <div class = "table-container">
+                <table class="search-display">
+                    <thead>
+                        <th>
+                            Title <i id="title" class="fa-solid fa-arrows-up-down active-sort-arrow"></i>
+                        </th>
+                        <th>
+                            Artist <i id="artist" class="fa-solid fa-arrows-up-down "></i>
+                        </th>
+                        <th>
+                            Year <i id="year" class="fa-solid fa-arrows-up-down "></i>
+                        </th>
+                        <th> 
+                            Genre <i id="genre" class="fa-solid fa-arrows-up-down "></i>
+                        </th>
+                        <th>
+                            Popularity <i id="Popularity" class="fa-solid fa-arrows-up-down "></i>
+                        </th>
+                        <th>
+                            Playlist
+                        </th>
+                    </thead>
+                    <tbody id="song-table-body"></tbody>
+                </table>
+    
+    
+    
+    
+    
+    
+            </div>
     </body>
 </html>
