@@ -1,4 +1,6 @@
+
 /* url of song api --- https versions hopefully a little later this semester */	
+
 const api = 'http://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php';
 const artist = JSON.parse(artists);
 const genre = JSON.parse(genres);
