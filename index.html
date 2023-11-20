@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lan="en">
     <head>
-       <title> COMP 3512 - Assignment #2 </title> 
-       <script src="data/artists.json"></script>
-       <script src="data/genres.json"></script>
-       <script src="data/sample-songs.json"></script>
+       <title> COMP 3512 - Assignment #2 </title>
        <link rel="stylesheet" href="css/index.css">
+<!--
        <script>
         (function() {
             console.log(typeof artists);
@@ -22,6 +20,7 @@
 
         })();
     </script>
+-->
     </head>
 
     <header>
@@ -43,7 +42,7 @@
                             <label for="Song title">Title</label>
                             <input list="song-title-search" name="song-title">
                         </div>
-                    <div  class="hide filter-div">
+                    <div class="hide filter-div">
                         <label for="artist-select">Artist</label>
                         <select name="artist-name" id="artist-select">
                           <option value="" disabled hidden selected></option>
@@ -62,10 +61,14 @@
                 </form>
     
             </div>
-    
-            <div class = "table-container">
-                <table class="search-display">
-                    <thead>
+                
+            </article>
+            
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
                         <th>
                             Title <i id="title" class="fa-solid fa-arrows-up-down active-sort-arrow"></i>
                         </th>
@@ -85,14 +88,15 @@
                             Playlist
                         </th>
                     </thead>
-                    <tbody id="song-table-body"></tbody>
-                </table>
-    
-            </div>
-                
-            </article>
-            
+            </table>
         </div>
+        
+        <section>
+            <script src="data/artists.json"></script>
+           <script src="data/genres.json"></script>
+           <script src="data/sample-songs.json"></script>
+            <script src="data/assign2.js"></script>
+        </section>
         
     </body>
     
