@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lan="en">
     <head>
-       <title> COMP 3512 - Assignment #2 </title> 
-       <script src="data/artists.json"></script>
-       <script src="data/genres.json"></script>
-       <script src="data/sample-songs.json"></script>
+       <title> COMP 3512 - Assignment #2 </title>
        <link rel="stylesheet" href="css/index.css">
        <script src="application.js"></script>     
+<!--
+       <script>
+        (function() {
+            console.log(typeof artists);
+            console.log(typeof genres);
+            console.log(typeof sample_songs);
+
+            const artistList = JSON.parse(artists);
+            const genreList = JSON.parse(genres);
+            const songList = JSON.parse(sampleSongs);
+
+            console.log(artistList);
+            console.log(genreList);
+            console.log(songList);
+
+        })();
+    </script>
+-->
     </head>
 
     <header>
@@ -15,7 +30,6 @@
         <div class="nav-title">
             <h3>Assignment #2 </h3>
         </div>
-      </div>
     </header>
     
     
@@ -29,7 +43,7 @@
                             <label for="Song title">Title</label>
                             <input list="song-title-search" name="song-title">
                         </div>
-                    <div  class="hide filter-div">
+                    <div class="hide filter-div">
                         <label for="artist-select">Artist</label>
                         <select name="artist-name" id="artist-select">
                           <option value="" disabled hidden selected></option>
@@ -48,15 +62,14 @@
                 </form>
     
             </div>
+                
+            </article>
+            
         </div>
-                    </form>
-                </div>
-                </article>
-                </div>
-    
-            <div class = "table-container">
-                <table class="search-display">
-                    <thead>
+        
+        <div class="table-container">
+            <table>
+                <thead>
                         <th>
                             Title <i id="title" class="fa-solid fa-arrows-up-down active-sort-arrow"></i>
                         </th>
@@ -76,11 +89,16 @@
                             Playlist
                         </th>
                     </thead>
-                    <tbody id="song-table-body"></tbody>
-                </table>
-    
-    
-
-            </div>
+            </table>
+        </div>
+        
+        <section>
+            <script src="data/artists.json"></script>
+           <script src="data/genres.json"></script>
+           <script src="data/sample-songs.json"></script>
+            <script src="data/assign2.js"></script>
+        </section>
+        
     </body>
+    
 </html>
