@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
      // filter button 
         
     //   function to display the main table 
-    function generateTable(songsApi){
+    function generateTable(songsApi) {
     table.textContent = "";
     const headers = ['Title', 'Artist', 'Year', 'Genre', 'Popularity', 'Playlist'];
                     
@@ -169,25 +169,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const tableRow = document.createElement('tr');
 
         const title = document.createElement('td');
-        title.textContent = s.title;
-        tableRow.appendChild(title);
-            
-        const artist = document.createElement('td');
-        artist.textContent = s.artist.name;
-        tableRow.appendChild(artist);
-                  
-        const year = document.createElement('td');
-        year.textContent = s.year;
-        tableRow.appendChild(year);
-                  
-        const genre = document.createElement('td');
-        genre.textContent = s.genre.name;
-        tableRow.appendChild(genre);
-               
-        const popularity = document.createElement('td');
-        popularity.textContent = s.details.popularity;
-        tableRow.appendChild(popularity);
-                  
+        
+        tableRow.appendChild( createSongColumn(s, 'title') );
+        tableRow.appendChild( createSongColumn(s.artist, 'name') );
+        tableRow.appendChild( createSongColumn(s, 'year') );
+        tableRow.appendChild( createSongColumn(s.genre, 'name') );
+        tableRow.appendChild( createSongColumn(s.details, 'popularity') );
+				
         const button = document.createElement('button');
                
         button.setAttribute('id',s.song_id);
@@ -196,8 +184,14 @@ document.addEventListener("DOMContentLoaded", function () {
         tableRow.appendChild(button);
                
         table.appendChild(tableRow);
-            }
+     }
+        // instead of a lot of copy and pasting of rows
+        function createSongColumn(obj, fieldName) {
+            const td = document.createElement('td');
+            td.textContent = obj[fieldName];
+            return td;
         }
+    }
 
         // creating and adding songs to playlist 
         function addPlaylist() {
