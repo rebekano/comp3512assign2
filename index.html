@@ -2,26 +2,8 @@
 <html lan="en">
     <head>
        <title> COMP 3512 - Assignment #2 </title>
-       <link rel="stylesheet" href="css/index.css">
-       <script src="application.js"></script>     
-<!--
-       <script>
-        (function() {
-            console.log(typeof artists);
-            console.log(typeof genres);
-            console.log(typeof sample_songs);
+       <link rel="stylesheet" href="css/index.css">   
 
-            const artistList = JSON.parse(artists);
-            const genreList = JSON.parse(genres);
-            const songList = JSON.parse(sampleSongs);
-
-            console.log(artistList);
-            console.log(genreList);
-            console.log(songList);
-
-        })();
-    </script>
--->
     </head>
 
     <header>
@@ -31,66 +13,61 @@
             <h3>Assignment #2 </h3>
         </div>
     </header>
-    
-    
-    <body>
-        <div class="display">
-            <article id="Searchdisplay">
-                <div class="Form-display">
-                    <h2> Basic Song Search</h2>
-                    <form id="song-search-form" >
-                        <div class="filter">
-                            <label for="Song title">Title</label>
-                            <input list="song-title-search" name="song-title">
-                        </div>
-                    <div class="hide filter-div">
-                        <label for="artist-select">Artist</label>
-                        <select name="artist-name" id="artist-select">
-                          <option value="" disabled hidden selected></option>
-                        </select>
-                    </div>
-    
-                    <div class="hide filter-div"> <label for="genre-select">Genre</label>
-                        <select name="genre-name" id="genre-select">
-                          <option value="" disabled hidden selected></option>
-                        </select>
-                    </div>
-                    <div id="btn-container">
-                        <button type="submit" id="searchButton" class="btn">Filter</button>
-                        <button type="submit" id="clearButton" class="btn">Clear</button>
-                    </div>
-                </form>
-    
-            </div>
-                
-            </article>
-            
+
+    <article id="searchPage">
+      <div class="searchSelect">
+
+        <div class="filter">
+            <input id="filterTitle" list="song-title-search" name="selection" type="radio" value="filterTitle" checked />
+            <label for="filterTitle">Title</label>
         </div>
         
-        <div class="table-container">
-            <table>
-                <thead>
-                        <th>
-                            Title <i id="title" class="fa-solid fa-arrows-up-down active-sort-arrow"></i>
-                        </th>
-                        <th>
-                            Artist <i id="artist" class="fa-solid fa-arrows-up-down "></i>
-                        </th>
-                        <th>
-                            Year <i id="year" class="fa-solid fa-arrows-up-down "></i>
-                        </th>
-                        <th> 
-                            Genre <i id="genre" class="fa-solid fa-arrows-up-down "></i>
-                        </th>
-                        <th>
-                            Popularity <i id="Popularity" class="fa-solid fa-arrows-up-down "></i>
-                        </th>
-                        <th>
-                            Playlist
-                        </th>
-                    </thead>
-            </table>
+        <div class="filter">
+            <input id="filterArtist" name="selection" type="radio" value="filterArtist" />
+            <label for="filterArtist">Artists</label>
         </div>
+        
+      
+        <div class="filter">
+            <input id="filterGenre" name="selection" type="radio" value="filterGenre" />
+            <label for="filterGenre">Genres</label>
+        </div>
+        
+
+        <form id="searchType">
+
+            <div class="filter">
+                <label for="titleSearch">Title</label>
+                <input id="titleSearch" name="Titles" type="text">
+            </div>
+            
+
+          <div class="hide filter">
+            <label id="artistLabel" for="Artists">Artist</label>
+            <select id="artistSearch" name="Artists" >
+              <option value="" disabled hidden selected></option>
+            </select>
+          </div>
+
+          <div class="hide filter">
+            <label id="genreLabel" for="Gen">Genre</label>
+            <select id="genreSearch" name="Gen" >
+              <option value="" disabled hidden selected></option>
+            </select>
+          </div>
+
+          <div id="button-container">
+            <button type="submit" id="filterButton" class="btn">Filter</button>
+            <button type="submit" id="clearButton" class="btn">Clear</button>
+            <button type="submit" id="viewPlaylist" class="btn">Playlist</button>
+        </div>
+        </form>
+      </div>
+
+      <div>
+        <div id="table"></div>
+    </div>
+    </article>
         
         <section>
             <script src="data/artists.json"></script>
@@ -99,6 +76,18 @@
             <script src="data/assign2.js"></script>
         </section>
         
+ <!-- //Song View -->
+    <article id="songView" class="hidden"></article>
+
+ <!-- //Playlist View -->
+    <article id="playlistView" class="hidden">
+        <button id ="closePlaylist" class="button"> Close Playlist </button>
+        <button id ="clearPlaylist" class="button"> Clear Playlist </button>
+        <button id ="removeSong" class="button"> Remove </button>
+        <button id ="projCredits" class="button"> Credits </button>
+
+        <div id="playlistInfo"></div>
+    </article>
     </body>
     
 </html>
