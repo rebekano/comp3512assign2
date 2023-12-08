@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
      
+    const added = []; 
 
     // Reusable function to output a list
     function outputList(data, target) {
@@ -244,7 +245,25 @@ document.addEventListener("DOMContentLoaded", function () {
     
          // function to clear songs from playlist 
 
-         // function to close playlist view 
+         document.querySelector("#clearPlaylist").addEventListener("click", function(){
+            while(added.length > 0) {
+                added.pop(); 
+            }
+            let playlisttable = document.querySelector('#playlistView table');
+            removeplaylist(added, playlisttable);
+         }); 
 
+         // function to close playlist view 
+         document.querySelector("#closePlaylist").addEventListener("click", function(){
+            let playlistView = document.querySelector("#playlistView");
+            let searchPage = document.querySelector("#searchPage");
+
+            playlistView.classList.toggle('hidden');
+            searchPage.classList.toggle('hidden');
+         });
+
+
+         // radar analytics 
+         
     });
   
