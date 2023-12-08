@@ -64,9 +64,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const generatetable = document.querySelector('#table'); 
     let column = document.querySelector('#table'); 
 
-    // Sort by title
+    // Sort by title, artist and genre
     songsApi.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1);    
     generateTable(songsApi);
+
+    artist.forEach((artist) => {
+        outputList(artist.name, document.querySelector("#artistSearch"));
+    })
+
+    genre.forEach((genre) => {
+        outputList(genre.name, document.querySelector("genreSearch"));
+    })
 
 
         document.querySelector('#table').addEventListener('click', function (e) {
@@ -258,6 +266,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
          // radar analytics 
-         
+
     });
   
