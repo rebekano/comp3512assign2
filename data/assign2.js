@@ -27,16 +27,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Filter (not working)
     function listOutput(title, parent) {
-        const opt = document.createElement("option");
-        opt.value = title;
-        opt.textContent = title;
-        parent.appendChild(opt);
+        const option = document.createElement("option");
+        option.value = title;
+        option.textContent = title;
+        parent.appendChild(option);
      }
 
     // Reusable function to output a list
-    function outputList(data, targetSelector) {
+    function outputList(data, target) {
         data.forEach(item => {
-            listOutput(item.name, document.querySelector(targetSelector));
+            listOutput(item.name, document.querySelector(target));
         });
     }
 
