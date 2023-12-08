@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const songsApi = JSON.parse(localStorage.getItem("song"));
-    const artist = JSON.parse(artists); // Note: 'artists' variable is not defined in the provided code.
-    const genre = JSON.parse(genres);   // Note: 'genres' variable is not defined in the provided code.
+    const artist = JSON.parse(artists);
+    const genre = JSON.parse(genres);   
     console.log("songs object", songsApi);
 
     //Filter (not working)
@@ -145,6 +145,26 @@ document.addEventListener("DOMContentLoaded", function () {
         tableRow.appendChild(button);
                
         table.appendChild(tableRow);
-            
-            }}});
+            }
+        }
+        function addPlaylist() {
+            const buttons = document.querySelectorAll('.addButton');
+         
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const songId = button.getAttribute('id');
+                    const found = songsApi.find(song => song.song_id == songId);
+         
+                    if (found && !added.includes(found)) {
+                        added.push(found);
+                        console.log('Song Has Been Added');
+                    } else {
+                        console.log('Song Has Already Been Added');
+                        console.log('Duplicate');
+                    } // Change these to display as a pop-up***
+                });
+            });
+         }
+    
+    });
   
