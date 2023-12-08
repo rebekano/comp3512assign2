@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    // fetching the data 
+
     if (!localStorage.getItem("song")) {
         const url = "https://www.randyconnolly.com/funwebdev/3rd/api/music/songs-nested.php";
         fetch(url)
@@ -11,9 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("Error fetching:", err);
             });
     } else {
-        const songs = JSON.parse(localStorage.getItem("song"));
+        songs = JSON.parse(localStorage.getItem("song"));
         loadSongs(songs);
     }
+
+    // function to load the songs 
 
     function loadSongs(data) {
         console.log(data);
@@ -25,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const genre = JSON.parse(genres);   
     console.log("songs object", songsApi);
 
+
     //Filter (not working)
     function listOutput(title, parent) {
         const option = document.createElement("option");
@@ -33,32 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
         parent.appendChild(option);
      }
 
-     // Filters the search bease on the selected value 
-     function filterselect(event){
-        const filter = event.target.value;
-        console.log(event.target); 
 
-        const hide = document.querySelectorAll("#searchType .hide"); 
-        hide.forEach(hidden => (hidden.classList.remove("hide")));
-        const word = [];
-        console.log(filter);
 
-        if (filter == "titlefilter") {
-            word.push(document.querySelector("#artistSearch").parentElement);
-            word.push(document.querySelector("#genreSearch").parentElement); 
-        }
-        else if (filter == "artistfilter") {
-            word.push(document.querySelector("#titleSearch").parentElement); 
-            word.push(document.querySelector("#genreSearch").parentElement);
-        }
-        else if (filter == "genrefilter") {
-            word.push(document.querySelector("#titleSearch").parentElement); 
-            word.push(document.querySelector("#genreSearch").parentElement);
-        }
-        word.forEach(elementType => (elementType.classList.add("hide"))); 
-     }
+    //  songApi.forEach(song => {
+    //     listOutput(song.title, document.querySelector("#titleSearch")); 
+    //  })
+    //  const titlesort = song.sort((a,b) => a.title.localeCompare(b.title)); 
+    //  generateTable(titlesort);
 
-     // filter button 
+  
      
 
     // Reusable function to output a list
@@ -72,6 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
     outputList(artist, "#artistSearch");
     outputList(genre, "#genreSearch");
 
+    const generatetable = document.querySelector('#table'); 
+    let column = document.querySelector('#table'); 
 
     // Sort by title
     songsApi.sort((a, b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1);    
@@ -124,13 +114,42 @@ document.addEventListener("DOMContentLoaded", function () {
             generateTable(data);
         }
      
+
+
+
+     // Filters the search bease on the selected value 
+     function filterselect(event){
+        const filter = event.target.value;
+        console.log(event.target); 
+
+        const hide = document.querySelectorAll("#searchType .hide"); 
+        hide.forEach(hidden => (hidden.classList.remove("hide")));
+        const word = [];
+        console.log(filter);
+
+        if (filter == "titlefilter") {
+            word.push(document.querySelector("#artistSearch").parentElement);
+            word.push(document.querySelector("#genreSearch").parentElement); 
+        }
+        else if (filter == "artistfilter") {
+            word.push(document.querySelector("#titleSearch").parentElement); 
+            word.push(document.querySelector("#genreSearch").parentElement);
+        }
+        else if (filter == "genrefilter") {
+            word.push(document.querySelector("#titleSearch").parentElement); 
+            word.push(document.querySelector("#genreSearch").parentElement);
+        }
+        word.forEach(elementType => (elementType.classList.add("hide"))); 
+     }
+
+
+     // filter button 
         
-    //   
+    //   function to display the main table 
     function generateTable(songsApi){
     table.textContent = "";
     const headers = ['Title', 'Artist', 'Year', 'Genre', 'Popularity', 'Playlist'];
                     
-
     // Using 'map' to create header for table 
     const headerRow = document.createElement('tr');
 
@@ -179,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        // creating playlist 
+        // creating and adding songs to playlist 
         function addPlaylist() {
             const buttons = document.querySelectorAll('.addButton');
          
@@ -199,6 +218,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
          }
 
+         // function to display the playlist view 
+
+
          // function to remove playlist 
          function removeplaylist(){
             let generateTable = document.querySelector('#playlistview'); 
@@ -211,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }); 
                     button.splice(index, 1); 
                     removetable(added, generateTable); 
+                    console.log('Song has been removed');
                 });
             }
          }
@@ -219,5 +242,9 @@ document.addEventListener("DOMContentLoaded", function () {
          // function to generate table for playlist view 
         
     
+         // function to clear songs from playlist 
+
+         // function to close playlist view 
+
     });
   
