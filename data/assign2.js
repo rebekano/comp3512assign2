@@ -33,6 +33,34 @@ document.addEventListener("DOMContentLoaded", function () {
         parent.appendChild(option);
      }
 
+     // Filters the search bease on the selected value 
+     function filterselect(event){
+        const filter = event.target.value;
+        console.log(event.target); 
+
+        const hide = document.querySelectorAll("#searchType .hide"); 
+        hide.forEach(hidden => (hidden.classList.remove("hide")));
+        const word = [];
+        console.log(filter);
+
+        if (filter == "titlefilter") {
+            word.push(document.querySelector("#artistSearch").parentElement);
+            word.push(document.querySelector("#genreSearch").parentElement); 
+        }
+        else if (filter == "artistfilter") {
+            word.push(document.querySelector("#titleSearch").parentElement); 
+            word.push(document.querySelector("#genreSearch").parentElement);
+        }
+        else if (filter == "genrefilter") {
+            word.push(document.querySelector("#titleSearch").parentElement); 
+            word.push(document.querySelector("#genreSearch").parentElement);
+        }
+        word.forEach(elementType => (elementType.classList.add("hide"))); 
+     }
+
+     // filter button 
+     
+
     // Reusable function to output a list
     function outputList(data, target) {
         data.forEach(item => {
@@ -95,11 +123,14 @@ document.addEventListener("DOMContentLoaded", function () {
         
             generateTable(data);
         }
+     
         
+    //   
     function generateTable(songsApi){
     table.textContent = "";
     const headers = ['Title', 'Artist', 'Year', 'Genre', 'Popularity', 'Playlist'];
                     
+
     // Using 'map' to create header for table 
     const headerRow = document.createElement('tr');
 
@@ -147,6 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
         table.appendChild(tableRow);
             }
         }
+
+        // creating playlist 
         function addPlaylist() {
             const buttons = document.querySelectorAll('.addButton');
          
@@ -165,6 +198,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             });
          }
+
+         // function to remove playlist 
+         function removeplaylist(){
+            let generateTable = document.querySelector('#playlistview'); 
+            const button = document.querySelectorAll('.removebtn'); 
+
+            for(let b of button){
+                b.addEventListener('click', function(){
+                    const index = added.findIndex(song => {
+                        return song.song_id == b.getAttribute('id');
+                    }); 
+                    button.splice(index, 1); 
+                    removetable(added, generateTable); 
+                });
+            }
+         }
+
+
+         // function to generate table for playlist view 
+        
     
     });
   
