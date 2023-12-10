@@ -1,28 +1,329 @@
-body {
-     /* background-color: wheat; */
-    margin: 0;
-    padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+/* Inspo for the css from:- https://colors.dopely.top/inside-colors/pink-color-palette-inspirations-with-names-hex-codes/ */
+/* Inspo css from :- https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius */
+
+.hidden, .hide {
+    display:none;
 }
 
+footer{
+    background-color: #ee7c99;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    border: thick double #33000d; 
+    text-align: center;
+}
 
-.table-container {
-    display: block;
+body {
+    background-image: #33000d;
+}
+
+#Title:active {
+    background-color: #c20030;
+}
+
+#Artist:active {
+    background-color: #c20030;
+}
+
+#Genre:active {
+    background-color: #c20030;
+}
+
+#Year:active {
+    background-color: #c20030;
+}
+
+#Popularity:active {
+    background-color: #c20030;
+}
+
+#table {
     width: fit-content;
     margin: auto;
     max-height: 500px;
+    overflow-y: auto;
+    /* border-radius:  5% / 40%;  */
+    border: thick double #33000d; 
+    text-align: center;
+    box-shadow: 0px 5px 10p 10px #33000d;
+    background-color: #FFC0CB;
+    color: black;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 100px;
 }
 
-table.table-container {
+#table::-webkit-scrollbar {
+    display: none;
+}
+
+.searchSelect {
     text-align: center;
-    border-collapse: collapse;
-    width: 400px;
+    padding: 20px;
+    background-color: #ee7c99;
+    font-size: 20px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-left: 312px;
     
+    border: thick double #33000d;
+    width: 750px;
+
+
+
+}
+
+#searchType {
+    margin-top: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: black 50px;
+}
+
+.filter {
+    /* background-color: ##ffb3c6ss; */
+    padding: 5px;
+    margin: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#filterButton, #clearButton {
+    margin-top: 10px;
+    padding: 10px;
+    margin-right: 100px;
+    text-align: right;
+    border-radius: 10px 100px / 120px;
+    background-color: plum;
+}
+
+#viewPlaylist {
+    position: relative;
+    background-color: plum;
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+#viewPlaylist:hover {
+    background-color: #FFC0CB;
+    cursor: pointer;
+}
+
+#titleSearch, #artistSearch, #genreSearch {
+margin-bottom: 10px;
+font-size: 15px;
+background-color: #8f8787;
+border: solid black 100px; 
+font-weight: 600;
+border-radius: 5px;
+padding: 4px;
+border: #191414;
+}
+
+#titleLabel, #artistLabel,#genreLabel {
+    font-size: 20px;
+    background-color: #a155b9;
+    width: fit-content;
+    margin: auto;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+#buttons {
+    margin-bottom: 10px;
+}
+
+#credits-snack {
+    visibility: hidden;
+    min-width: 200px;
+    margin-top: 10px;
+    background-color: plum;
+    text-align: righ;
+    padding: 10px;
+    position: fixed;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px;
+}
+
+#credits-btn {
+    background-color: #f186ac;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 5px;
+    text-align: right;
+}
+
+#credits-snack.show, #snack.show {
+    visibility: visible;
+}
+
+/* snack for songs added */
+#snack {
+    visibility: hidden;
+    background-color: #f186ac;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    width: 150px;
+    bottom: 90%;
+    left: 75%;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    border-radius: 20px;
+    box-shadow: 10px 10px;
+}
+
+.btn, .addButton  { /* Filter and clear */
+    background-color: plum;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.btn:hover, .addButton:hover {
+    cursor: pointer;
+    background-color: #FFC0CB;
+}
+
+#radio-label{
+font-size: 50px;
+box-shadow: #a15589;
 }
 
 th {
+    font-size: 30px;
+    padding: 20px;
+    border-bottom: solid #a155b9 2px;
+    color: #191414;
     position: sticky;
-    top: 0;
-    min-width: 100px;
+    top: 0; 
+    background-color: #DB7093;
+}
+
+#playlistView {
+    width: fit-content;
+    margin: auto;
+    max-height: 700px;
+    border-radius: 20px;
+    text-align: center;
+    overflow-y: auto;
+    /* background-color: #a155b9; */
+    color: black;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 35px;
+    margin-top: 30px;
+    box-shadow: 10px 10px 10px #DB7093;
+}
+
+#clearPlaylist, #closePlayview {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+#playlistView::-webkit-scrollbar {
+    display: none;
+}
+
+.removeButton:hover {
+    cursor: pointer;
+    background-color: #FFC0CB;
+}
+
+.removeButton {
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #f186ac;
+    margin-top: 15px;
+}
+
+tr:nth-child(even) {
+    background-color: #ffebeb; 
+    color: black;
+}
+
+tr:hover {
+    background-color: #a15589;
+}
+tr {
+    cursor: pointer;
+}
+
+td {
+    border-right: solid #FFF5EE 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    background-color: #33000d;
+    color: #ffe5ec;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+    margin: left;
+}
+
+#radarContainer{
+    background-color: #33000d;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #33000d;
+    margin-bottom: 30px;
+
+}
+
+.infoBackButton {
+    float:right;
+    border-radius: 20px;
+    font-size: 20px;
+    background-color: #f186ac;
+    margin-top: 15px;
+    margin-right: 20px;
+    padding: 10px;
+
+}
+.infoBackButton:hover {
+    cursor: pointer;
+    background-color: #ffe5f1;
+}
+
+.songInfo {
+    border: solid black 1px;
+    margin: auto;
+    width: 60%;
+    margin-bottom: 40px;
+    text-align: center;
+    background-color: #ff8fab;
+    color: #33000d;
+    border-radius: 15px;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 400;
+    box-shadow: 10px 10px 10px;
+}
+
+.songDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    gap: 10px;
+    margin: 50px;
+}
+
+html{
+    background-color: #f9d1d1;
 }
 
