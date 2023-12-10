@@ -1,93 +1,118 @@
 <!DOCTYPE html>
-<html lan="en">
-    <head>
-       <title> COMP 3512 - Assignment #2 </title>
-       <link rel="stylesheet" href="css/index.css">   
+  <html lang="en">
+    <meta charset="utf-8">
+    <meta name="authors"content= "Faye Palarca, Harsheen Nijjer, Rebeka Ochieng"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/index.css">  
+    <script src="data/artists.json"></script>
+    <script src="data/genres.json"></script>
+    <script src="data/sample-songs.json"></script>
+    <script src="data/assign2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    </head>
+<head>
+    <!-- Title -->
+    <title>COMP 3512 Assignment 2</title> 
+</head>
 
+<body>
     <header>
-        <div>Group Members: Faye Palarca, Harsheen Nijjer, Rebeka Ochieng</div>
-        <a href="https://github.com/rebekano/rebekano.github.io/tree/main">Github Repository</a>
-        <div class="nav-title">
-            <h3>Assignment #2 </h3>
-        </div>
-    </header>
+      <!--Assignment Credits -->
+      <nav>
+        <button id="credits-btn"><a href="https://github.com/rebekano/rebekano.github.io">Credits</a></button>
+      </nav>
 
-    <article id="searchPage">
+      <div id="credits-snack">
+        <div>Faye Palarca, Harsheen Nijjer, Rebeka Ochieng</div>
+        <a href="https://github.com/rebekano/rebekano.github.io">GitHub Repo</a>
+      </div>
+    </header> 
+
+    
+    <article id="searchView">
       <div class="searchSelect">
 
-        <div class="filter">
-            <input id="filterTitle" list="song-title-search" name="selection" type="radio" value="filterTitle" checked />
-            <label for="filterTitle">Title</label>
-        </div>
         
-        <div class="filter">
-            <input id="filterArtist" name="selection" type="radio" value="filterArtist" />
-            <label for="filterArtist">Artists</label>
-        </div>
-        
-      
-        <div class="filter">
-            <input id="filterGenre" name="selection" type="radio" value="filterGenre" />
-            <label for="filterGenre">Genres</label>
-        </div>
-        
+        <label class="radio-label">
+          <input id="radioTitle" value="filterTitle" name="selection" type="radio" checked />
+          <span>Title</span>
+        </label>
+     
+        <label class="radio-label">
+          <input id="radioArtist" name="selection" type="radio" value="filterArtist" />
+          <span>Artists</span>
+        </label>
+     
+        <label class="radio-label">
+          <input id="radioGenre" name="selection" type="radio" value="filterGenre" />
+          <span>Genres</span>
+        </label>
+     
 
         <form id="searchType">
-
-            <div class="filter">
-                <label for="titleSearch">Title</label>
-                <input id="titleSearch" name="Titles" type="text">
-            </div>
-            
-
-          <div class="hide filter">
-            <label id="artistLabel" for="Artists">Artist</label>
-            <select id="artistSearch" name="Artists" >
-              <option value="" disabled hidden selected></option>
-            </select>
+          <div class="filter">
+             <label for="Titles" id="titleLabel">Title</label>
+             <input id="titleSearch" name="Titles">
           </div>
-
+       
           <div class="hide filter">
-            <label id="genreLabel" for="Gen">Genre</label>
-            <select id="genreSearch" name="Gen" >
-              <option value="" disabled hidden selected></option>
-            </select>
+             <label for="Artists" id="artistLabel">Artist</label>
+             <select id="artistSearch" name="Artists">
+                <option value="" disabled hidden selected></option>
+             </select>
           </div>
+       
+          <div class="hide filter">
+             <label for="Gen" id="genreLabel">Genre</label>
+             <select id="genreSearch" name="Gen">
+                <option value="" disabled hidden selected></option>
+             </select>
+          </div>
+       
+          
+          <div id="buttons">
+             <button type="submit" id="filterButton" class="btn">Filter</button>
+             <button type="submit" id="clearButton" class="btn">Clear</button>
+             <button type="submit" id="viewPlaylist" class="btn">Playlist</button>
+          </div>
+       </form>
+       
 
-          <div id="button-container">
-            <button type="submit" id="filterButton" class="btn">Filter</button>
-            <button type="submit" id="clearButton" class="btn">Clear</button>
-            <button type="submit" id="viewPlaylist" class="btn">Playlist</button>
-        </div>
-        </form>
+
+      </div>
+      
+      <div id="added-snack">
       </div>
 
       <div>
         <div id="table"></div>
     </div>
     </article>
-        
-        <section>
-            <script src="data/artists.json"></script>
-           <script src="data/genres.json"></script>
-           <script src="data/sample-songs.json"></script>
-            <script src="data/assign2.js"></script>
-        </section>
-        
-<!-- Single Song Page -->
-    <article id="songView" class="hidden"></article>
 
-<!-- Playlist Page -->
+
+    <!-- Song Page -->
+    <article id="songView" class="hidden">
+    </article>
+
+    <!-- Playlist Page -->
     <article id="playlistView" class="hidden">
-        <button id ="closePlaylist" class="button"> Close Playlist </button>
-        <button id ="clearPlaylist" class="button"> Clear Playlist </button>
-        <button id ="removeSong" class="button"> Remove </button>
-        <button id ="projCredits" class="button"> Credits </button>
-
+        <button id="closePlayview" class="btn">Close View</button>
+        <button id="clearPlaylist" class="btn">Clear Playlist</button>
         <div id="playlistInfo"></div>
     </article>
-    </body>
-    
+
+<div id="snack">
+</div>
+
+<!--Footer for User's name, course name, Github links-->
+<footer>
+  <div class="footer">
+    <a href= "https://github.com/rebekano/rebekano.github.io" target="_blank">&#9671; Github Repo Link</a>
+    <p>Names: Faye Palarca, Harsheen Nijjer, Rebeka Ochieng</p>
+    <p>Course: Comp 3512 Web II</p>
+  </div>
+</footer>
+
+</body>
 </html>
+        
