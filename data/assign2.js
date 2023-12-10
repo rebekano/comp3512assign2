@@ -602,113 +602,114 @@ document.addEventListener("DOMContentLoaded", () => {
     }
  
  
-   //Function that makes the data visible on the radarr ca
-    function makeData(song) {
-       const div = document.createElement("div");
-       const radarDiv = document.createElement("div");
-       radarDiv.setAttribute('id', 'radarContainer');
-       const canvas = document.createElement("canvas");
-       canvas.setAttribute('id', 'radarChart');
-       
-       radarDiv.appendChild(canvas);
+  //Function that makes the data visible on the radar
+   
  
-       radarDiv.style.width = 500 + "px";
-       radarDiv.style.height = '500px';
- 
-       drawChart(canvas, song);
-       div.appendChild(radarDiv);
-       return div;
-    }
- 
-  
-    function drawChart(canvas, song) {
-       console.log(song)
-       new Chart(canvas, {
-          type: 'radar',
-          data: {
-             //labels needed
-             labels: ['Dance',
-                      'Energy', 
-                      'Speech', 
-                      'Acoustic', 
-                      'Liveness', 
-                      'Valence'],
- 
-             datasets: [{
-                   label: 'Song Analytics',
-                   data: [song.analytics.danceability, 
-                          song.analytics.energy, 
-                          song.analytics.speechiness, 
-                          song.analytics.acousticness, 
-                          song.analytics.liveness, 
-                          song.analytics.valence],
- 
-                   fill: true,
- 
-                   backgroundColor: 'rgba(30, 215, 96, 0.5)',
-                   borderColor: '#1DB954',
-                   pointBackgroundColor: '#1DB954',
-                   pointBorderColor: '#fff',
-                   pointHoverBackgroundColor: '#fff',
-                   pointHoverBorderColor: 'rgb(255, 99, 132)'
-             }]
-          },
-          //styling for the radar
-          options: {
-             plugins: {
-                legend:{
-                   display: true,
-                   labels: {color: "white"},
-                },
-                title: {
-                   display: true,
-                   text: `${song.title}`,
-                   align: 'center',
-                   color: 'white',
-                   font:{
-                         family: 'serif',
-                         color: 'white',
-                         size: 20,
-                         weight: 400
-                   }
-                }
+  function drawChart(canvas, song) {
+    console.log(song)
+    new Chart(canvas, {
+       type: 'radar',
+       data: {
+          //labels needed
+          labels: ['Dance',
+                   'Energy', 
+                   'Speech', 
+                   'Acoustic', 
+                   'Liveness', 
+                   'Valence'],
+
+          datasets: [{
+                label: 'Song Analytics',
+                data: [song.analytics.danceability, 
+                       song.analytics.energy, 
+                       song.analytics.speechiness, 
+                       song.analytics.acousticness, 
+                       song.analytics.liveness, 
+                       song.analytics.valence],
+
+                fill: true,
+
+                backgroundColor: 'rgba(100, 75.3, 79.6)',
+                borderColor: '#e79898',
+                pointBackgroundColor: '#e79898',
+                pointBorderColor: '#ffebeb',
+                pointHoverBackgroundColor: '#ffebeb',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+          }]
+       },
+       //styling for the radar
+       options: {
+          plugins: {
+             legend:{
+                display: true,
+                labels: {color: "white"},
              },
-             scales: {
-                r: {
-                   ticks: {
-                         color: "white",
-                         backdropColor: "transparent",
-                         textStrokeWidth: 5,
-                         font:{
-                            family: 'serif',
-                            size: 13
-                         }
-                   },
-                   pointLabels: {
-                         color: 'white',
-                         font:{
-                            family: 'serif',
-                            size: 14,
-                            weight: 'bold'
-                         }
-                   },
-                   grid: {
-                         circular: true,
-                         color: "white"
-                   },
-                   suggestedMin: 0,
-                }
-             },
-             responsive: true,
-             elements: {
-                line: {
-                   borderWidth: 2
+             title: {
+                display: true,
+                text: `${song.title}`,
+                align: 'center',
+                color: 'white',
+                font:{
+                      family: 'serif',
+                      color: 'white',
+                      size: 70,
+                      weight: 400
                 }
              }
-       }
-       });
+          },
+          scales: {
+             r: {
+                ticks: {
+                      color: "white",
+                      backdropColor: "transparent",
+                      textStrokeWidth: 5,
+                      font:{
+                         family: 'serif',
+                         size: 30
+                      }
+                },
+                pointLabels: {
+                      color: 'white',
+                      font:{
+                         family: 'serif',
+                         size: 30,
+                         weight: 'bold'
+                      }
+                },
+                grid: {
+                      circular: true,
+                      color: "white"
+                },
+                suggestedMin: 0,
+             }
+          },
+          responsive: true,
+          elements: {
+             line: {
+                borderWidth: 2
+             }
+          }
     }
- });
- 
- 
- 
+    });
+ }
+
+ function makeData(song) {
+    const div = document.createElement("div");
+    const radarDiv = document.createElement("div");
+    radarDiv.setAttribute('id', 'radarContainer');
+    const canvas = document.createElement("canvas");
+    canvas.setAttribute('id', 'radarChart');
+    
+    radarDiv.appendChild(canvas);
+
+    radarDiv.style.width = 700 + "px";
+    radarDiv.style.height = '700px';
+
+    drawChart(canvas, song);
+    div.appendChild(radarDiv);
+    return div;
+ }
+
+});
+
+
